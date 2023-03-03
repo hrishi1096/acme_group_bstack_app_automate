@@ -15,8 +15,11 @@ add the same command here
 It runs the sample test cases on the chosen **real** devices in
 parallel on Browserstack App Automate
 
-Which devices are being used?
-It can be seen in the `Add path to the file` file
+# Which devices are being used?
+
+It can be seen in the `browserstack.yml` file.
+[Plug and play Browserstack SDK](https://www.browserstack.com/blog/introducing-browserstack-sdk/) :rocket:
+
 You can choose to change the choice of devices by specifying different capabilities.
 
 For ease of use: use [Browserstack's capability generator](https://www.browserstack.com/app-automate/capabilities)
