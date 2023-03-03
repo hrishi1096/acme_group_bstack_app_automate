@@ -33,6 +33,9 @@ jobs:
           project-name: 'REPO_NAME'
 
       - name: Run test
-        run: <Add the command here>
+        run: |
+          rm -f -- browserstack.yml
+          ln src/test/resources/conf/capabilities/browserstack-parallel-devices.yml browserstack.yml
+          mvn clean test -P bstack-parallel-devices
 
 
