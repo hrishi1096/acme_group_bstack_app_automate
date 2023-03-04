@@ -18,24 +18,33 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup JDK
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11.0.11'
-          distribution: 'adopt'
-
       - name: BrowserStack Env Setup
-        uses: browserstack/github-actions/setup-env@master
+        uses: 'browserstack/github-actions/setup-env@master'
         with:
           username:  ${{ secrets.BROWSERSTACK_USERNAME }}
           access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           build-name: 'BUILD_INFO'
           project-name: 'REPO_NAME'
 
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install Percy
+        run: npm install @percy/cli
+
       - name: Run test
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
         run: |
           rm -f -- browserstack.yml
           ln src/test/resources/conf/capabilities/browserstack-parallel-devices.yml browserstack.yml
-          mvn clean test -P bstack-parallel-devices
+          npx percy exec -- mvn clean test -P bstack-parallel-devices
 
 
