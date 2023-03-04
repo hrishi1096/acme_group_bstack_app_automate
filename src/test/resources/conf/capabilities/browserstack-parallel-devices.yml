@@ -19,7 +19,7 @@ accessKey: BROWSERSTACK_ACCESS_KEY
 buildName: browserstack-parallel-devices
 
 # Use `projectName` to set the name of your project. Example, Marketing Website
-projectName: BrowserStack Samples
+projectName: BrowserStack acme
 # Use `framework` to set the framework of your project. Example, testng, cucumber, cucumber-testng
 framework: testng
 
