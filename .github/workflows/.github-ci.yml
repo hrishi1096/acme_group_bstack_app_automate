@@ -45,6 +45,6 @@ jobs:
         run: |
           rm -f -- browserstack.yml
           ln src/test/resources/conf/capabilities/browserstack-parallel-devices.yml browserstack.yml
-          npx percy exec -- mvn clean test -P bstack-parallel-devices
+          npx percy app:exec -- mvn clean test -P bstack-parallel-devices
 
 
